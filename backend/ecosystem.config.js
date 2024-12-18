@@ -1,6 +1,7 @@
 require('dotenv').config();
 
 const dotenv = require('dotenv');
+
 dotenv.config({ path: './.env.deploy' });
 
 const {
@@ -8,11 +9,11 @@ const {
 } = process.env;
 
 module.exports = {
-  apps : [{
-    name   : "app",
-    script : "./app.js"
+  apps: [{
+    name: 'app',
+    script: './app.js',
   }],
-deploy: {
+  deploy: {
     production: {
       user: DEPLOY_USER,
       host: DEPLOY_HOST,
@@ -23,4 +24,4 @@ deploy: {
       'post-deploy': 'npm i && npm run build && pm2 startOrRestart ecosystem.config.js --env production',
     },
   },
-}
+};
